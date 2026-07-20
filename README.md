@@ -50,10 +50,10 @@ When executing the query via `run_query_executor`, you must pass these exact var
 ### The Golden Rule of Mappings
 The variable key identifier defined inside your **`runtime_inputs` object template** must match the **Python parameter key** exactly. 
 
-| Location | Key Syntax | Example |
-| :--- | :--- | :--- |
-| **1. Inside Intent JSON:** | `"runtime_inputs": [{"email": "${target_email}"}]` | Uses `${target_email}` placeholder |
-| **2. Inside `run_query_executor`:** | `andi.run_query_executor(plan, target_email=variable)` | `target_email=target_email` |
+| Location | Key Syntax                                                     | Example |
+| :--- |:---------------------------------------------------------------| :--- |
+| **1. Inside Intent JSON:** | `"runtime_inputs": [{"email": "${target_email}"}]`             | Uses `${target_email}` placeholder |
+| **2. Inside `run_query_executor`:** | `vector_agent.run_query_executor(plan, target_email=variable)` | `target_email=target_email` |
 
 ---
 
@@ -62,47 +62,47 @@ The variable key identifier defined inside your **`runtime_inputs` object templa
 Here is exactly how the mapping connects from your JSON definition to execution:
 
 ```Python
-import os
-from nlp_pymongo import MongoClient
+from vectordba import VectorAgent
 
-# 1. Initialize ANDI
-andi = MongoClient(db_session=None, analyzed_schemas=None)
+class TestProject:
+    def testing_nlp(self, db_session, analyzed_schemas):
+        self.db = db_session
+        self.analyzed_schemas = analyzed_schemas
 
-# 2. Connect to your MongoDB instance
-MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
-DATABASE_NAME = "database_name"
-connection_string = f"mongodb://{MONGO_URI}"
 
-andi.initialize_connection(connection_string=MONGO_URI, database_name=DATABASE_NAME)
+        connection_string = "mongodb+srv://dbuser:alpahbeta123456@arasthoo-dev.egtuvaa.mongodb.net/?retryWrites=true&w=majority&appName=arasthoo-dev"
 
-# 3. Analyze and locally cache the schema structure for required collections
-# (Your database records never leave your local environment)
-andi.analyze_schemas(base_collections=["users", "wallets", "weekly_leaderboard"])
+        vector_agent = VectorAgent(db_session=db_session, analyzed_schemas=analyzed_schemas)
+        database_name = "aristotle"
 
-# 4. Define a natural language intent with safe runtime variables
-target_email = "test_user_8_fischertimothy@gmail.com"
+        status = vector_agent.initialize_connection(connection_string=connection_string, database_name=database_name)
 
-intent = {
-    "intent": {
-        "goal": "Find the preferred_language and name of the user where email=target_email",
-        "runtime_inputs": [
-            {
-                "email": "${target_email}",
-                "datatype": "string"
-            }
-        ],
-        "projection": ["name", "preferred_language"]
-    }
-}
+        print(status)
 
-# 5. Build the optimized NLP query execution plan
-query_plan = andi.build_nlp_query(intent, query_identifier=None)
-print(query_plan)
-# 6. Execute safely against your database. Make sure passing argument name and variable name must match to resolve during runtime.
-result = andi.run_query_executor(query_plan, target_email=target_email)
+        user_coll = vector_agent.analyze_schemas(base_collections=["users", "wallets", "weekly_leaderboard"])
+        print(user_coll)
 
-print(result)
-[{'name': 'Scott Watkins', 'preferred_language': 'en'}]
+        #Example 1
+
+        target_email = "test_user_8_fischertimothy@gmail.com"
+
+        intent = {
+          "intent": {
+            "goal": "Find the preferred_language and name of the user where email=target_email",
+            "runtime_inputs":[
+                {
+                    "email":"${target_email}",
+                    "datatype": "string"
+                }
+            ],
+            "projection":["name", "preferred_language"]
+          }
+        }
+        query = vector_agent.build_nlp_query(intent=intent, query_identifier=None, retry=False)
+        print(query)
+
+        output = vector_agent.run_query_executor(nlp_query=query, target_email=target_email)
+        print(output)
 ```
 
 ## 🏗️ How It Works
