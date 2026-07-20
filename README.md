@@ -123,7 +123,7 @@ graph TD
 
     %% 2. Orchestration Layer
     subgraph VectorDBA_Engine ["VectorDBA Agent Engine Core"]
-        Init["VectorAgent Initialization<br>(Target Database Target Setup)"]:::engine
+        Init["VectorAgent Initialization<br>(Target Database Setup)"]:::engine
         SchemaAnalzer["vector_agent.analyze_schemas()<br>(Extracts Schemas)"]:::engine
         Builder["vector_agent.build_nlp_query()<br>(Deterministic Query Construction)"]:::engine
     end
