@@ -122,9 +122,9 @@ graph TD
     end
 
     %% 2. Orchestration Layer
-    subgraph VectorDBA_Engine ["VectorDBA Agent Engine Engine Core"]
+    subgraph VectorDBA_Engine ["VectorDBA Agent Engine Core"]
         Init["VectorAgent Initialization<br>(Target Database Target Setup)"]:::engine
-        SchemaAnalzer["vector_agent.analyze_schemas()<br>(Extracts Dynamic Data Archetype Rules)"]:::engine
+        SchemaAnalzer["vector_agent.analyze_schemas()<br>(Extracts Schemas)"]:::engine
         Builder["vector_agent.build_nlp_query()<br>(Deterministic Query Construction)"]:::engine
     end
 
@@ -136,13 +136,14 @@ graph TD
 
     %% 4. Data Execution Target
     subgraph Infrastructure ["Enterprise Storage Target"]
-        MongoCluster[("Production NoSQL Cluster<br>(MongoDB / Aristotle DB)")]:::database
+        MongoCluster[("NoSQL Cluster<br>(MongoDB)")]:::database
     end
 
     %% Data Pipeline Connections Flow
     API_Call -->|1. Transmit Payload| Init
     Init -->|2. Scrape Structure Constraints| SchemaAnalzer
     SchemaAnalzer -->|3. Establish Pipeline Context Boundaries| Builder
+    
     
     Builder -->|4. Inspect Fields Against Schema| IntentRouter
     IntentRouter -->|Passed: Valid Fields| Sanitize
