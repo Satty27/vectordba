@@ -109,23 +109,51 @@ class TestProject:
 
 ```mermaid
 graph TD
-    %% Define Styles & Colors
-    classDef default fill:#1e1e24,stroke:#333,stroke-width:1px,color:#fff;
-    classDef highlight fill:#2e7d32,stroke:#4caf50,stroke-width:2px,color:#fff;
-    classDef db fill:#0d47a1,stroke:#1565c0,stroke-width:1px,color:#fff;
+    %% Styling and Color Palettes (Enterprise Vibe)
+    classDef client fill:#eef2f7,stroke:#3b82f6,stroke-width:2px,color:#1e3a8a;
+    classDef engine fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1e40af,font-weight:bold;
+    classDef security fill:#fff1f2,stroke:#f43f5e,stroke-width:2px,color:#9f1239;
+    classDef database fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#14532d;
+    classDef structural fill:#fafafa,stroke:#71717a,stroke-width:1px,color:#27272a;
 
-    DB[(MongoDB Instance)]:::db
-    Schema[1. Local Schema Caching<br/><i>Generates .schema_cache.json</i>]:::default
-    LLM[2. OpenAI gpt-4o-mini Agent<br/><i>Translates Intent + Metadata</i>]:::highlight
-    Executor[3. Secure Query Executor<br/><i>Compiles bindings & executes locally</i>]:::default
-    Result([Clean Python Dict Output]):::default
+    %% 1. Ingestion Layer
+    subgraph Client_Layer ["Application Interface"]
+        API_Call["POST /api/v1/nlp_query<br>(Payload: Intent + Base Collections)"]:::client
+    end
 
-    %% Flow Connections
-    DB -->|Local Structural Scan| Schema
-    Schema -->|Schema Metadata Only| LLM
-    LLM -->|Valid MongoDB JSON Syntax| Executor
-    Executor -->|Runs Native Driver Command| DB
-    Executor -->|Returns Data| Result
+    %% 2. Orchestration Layer
+    subgraph VectorDBA_Engine ["VectorDBA Agent Engine Engine Core"]
+        Init["VectorAgent Initialization<br>(Target Database Target Setup)"]:::engine
+        SchemaAnalzer["vector_agent.analyze_schemas()<br>(Extracts Dynamic Data Archetype Rules)"]:::engine
+        Builder["vector_agent.build_nlp_query()<br>(Deterministic Query Construction)"]:::engine
+    end
+
+    %% 3. Security & Validation Layer
+    subgraph Security_Guardrails ["Enterprise Safety Controls"]
+        IntentRouter{"Intent Routing<br>& Field Validation"}:::security
+        Sanitize{"Injection Scanning<br>& Operator Isolation"}:::security
+    end
+
+    %% 4. Data Execution Target
+    subgraph Infrastructure ["Enterprise Storage Target"]
+        MongoCluster[("Production NoSQL Cluster<br>(MongoDB / Aristotle DB)")]:::database
+    end
+
+    %% Data Pipeline Connections Flow
+    API_Call -->|1. Transmit Payload| Init
+    Init -->|2. Scrape Structure Constraints| SchemaAnalzer
+    SchemaAnalzer -->|3. Establish Pipeline Context Boundaries| Builder
+    
+    Builder -->|4. Inspect Fields Against Schema| IntentRouter
+    IntentRouter -->|Passed: Valid Fields| Sanitize
+    IntentRouter -.->|Failed: Reject Intent| API_Call
+    
+    Sanitize -->|5. Compile Secure BSON Native Pipeline| MongoCluster
+    
+    MongoCluster -->|6. Standard Isolated Output Cursor| API_Call
+
+    %% Apply Styles to classes
+    class Builder,SchemaAnalzer,Init engine;
   
 ```
 
