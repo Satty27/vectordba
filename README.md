@@ -1,6 +1,6 @@
 # VectorDBA: Agentic MongoDB NLP Database Interface 🤖🍃
 
-[![PyPI version](https://img.shields.io/pypi/v/andi-ai.svg)](https://pypi.org/project/andi-ai/)
+[![PyPI version](https://img.shields.io/pypi/v/andi-ai.svg)](https://pypi.org/project/vectordba/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
