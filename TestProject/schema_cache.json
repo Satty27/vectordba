@@ -1,0 +1,196 @@
+[
+    {
+        "collection": {
+            "users": {
+                "fields": {
+                    "name": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "gender": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "age": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "username": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "preferred_language": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "display_picture": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "datetime": {
+                        "type": "date",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "fcm_token": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "upi": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "code": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "code_validity": {
+                        "type": "date",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    }
+                },
+                "indexes": []
+            }
+        }
+    },
+    {
+        "collection": {
+            "wallets": {
+                "fields": {
+                    "email": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "balance": {
+                        "type": "integer",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    }
+                },
+                "indexes": []
+            }
+        }
+    },
+    {
+        "collection": {
+            "weekly_leaderboard": {
+                "fields": {
+                    "engagement_id": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "challenge_id": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "option_selected": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "correct_answer": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "user_selected_right_answer": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "quiz_type": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "tag": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "based_on": {
+                        "type": "string",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "time_saved_millis": {
+                        "type": "integer",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "challenge_start_datetime": {
+                        "type": "long",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "challenge_end_datetime": {
+                        "type": "long",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    },
+                    "attempt_datetime": {
+                        "type": "date",
+                        "allowed_filter": true,
+                        "allowed_output": true
+                    }
+                },
+                "indexes": []
+            }
+        }
+    },
+    {
+        "collection": {
+            "u": {
+                "fields": {},
+                "indexes": []
+            }
+        }
+    },
+    {
+        "collection": {
+            "s": {
+                "fields": {},
+                "indexes": []
+            }
+        }
+    },
+    {
+        "collection": {
+            "e": {
+                "fields": {},
+                "indexes": []
+            }
+        }
+    },
+    {
+        "collection": {
+            "r": {
+                "fields": {},
+                "indexes": []
+            }
+        }
+    }
+]
