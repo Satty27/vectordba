@@ -28,7 +28,7 @@ Stop building, maintaining, and debugging dozens of rigid, single-purpose CRUD e
 ANDI is available on PyPI. Install it cleanly using `pip`:
 
 ```bash
-pip install andi-ai
+pip install vectordba
 ```
 
 ## ⚙️ Prerequisites
