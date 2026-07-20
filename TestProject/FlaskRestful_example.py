@@ -44,7 +44,7 @@ class AnalyticsQueryEngine(Resource):
 
 
         try:
-            connection_string = ""
+            connection_string = "mongodb://localhost:27017"
 
             vector_agent = VectorAgent(db_session="", analyzed_schemas=[])
             database_name = "test"

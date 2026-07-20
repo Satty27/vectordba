@@ -6,7 +6,7 @@ class TestProject:
         self.analyzed_schemas = analyzed_schemas
 
 
-        connection_string = "mongodb+srv://dbuser:alpahbeta123456@arasthoo-dev.egtuvaa.mongodb.net/?retryWrites=true&w=majority&appName=arasthoo-dev"
+        connection_string = "mongodb://localhost:27017"
 
         vector_agent = VectorAgent(db_session=db_session, analyzed_schemas=analyzed_schemas)
         database_name = "aristotle"
