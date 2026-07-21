@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
-**VectorDBA is the Secure AI Data Gateway for Enterprise MongoDB **.
+**VectorDBA** is the Secure AI Data Gateway for Enterprise MongoDB.
 We provide a deterministic middleware layer that enables AI agents and software applications to safely read from MongoDB clusters using natural language.
 We provide a deterministic middleware gateway that allows AI agents and applications to safely query MongoDB clusters using plain text—without sacrificing speed, security, or predictability.
 By leveraging the reasoning capabilities of `gpt-4o-mini`, VectorDBA instantly translates plain English into precise MongoDB standard queries or complex multi-stage aggregation pipelines—complete with dynamic runtime variables.
