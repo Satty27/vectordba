@@ -72,59 +72,14 @@ class ExecuteQuery:
             collection = nlp_query.get("collection")
 
 
-            if operation == "updateOne" or operation == "updateMany":
-                query = nlp_query.get("query")
-                update_query = nlp_query.get("update")
-
-                query = resolve_placeholders(query, **kwargs)
-                update_query = resolve_placeholders(update_query, **kwargs)
-
-
-                try:
-                    coll = db_session.get_collection(collection)
-                    result = coll.update_one(query, update_query)
-                    if result.acknowledged:
-                        if result.matched_count == 0:
-                            ret_json = {
-                                "operation": operation,
-                                "collection": collection,
-                                'status': 'success',
-                                "message": "no documents found: matched_count = 0",
-                            }
-                            return ret_json
-
-                        ret_json = {
-                            "operation": operation,
-                            "collection": collection,
-                            'status': 'success',
-                            "message": "modified records: " + result.modified_records,
-                        }
-                        return ret_json
-
-                except errors.DuplicateKeyError as err:
-                    ret_json = {
-                        "operation": operation,
-                        "collection": collection,
-                        'status': 'error',
-                        "message": "Duplicate key error: " + str(err),
-                    }
-                    return ret_json
-                except errors.ConnectionFailure as err:
-                    ret_json = {
-                        "operation": operation,
-                        "collection": collection,
-                        'status': 'error',
-                        "message": "Failed to establish a connection:  " + str(err),
-                    }
-                    return ret_json
-                except errors.PyMongoError as err:
-                    ret_json = {
-                        "operation": operation,
-                        "collection": collection,
-                        'status': 'error',
-                        "message": "Pymongo error:  " + str(err),
-                    }
-                    return ret_json
+            if operation == "updateOne" or operation == "updateMany" or operation == "insert" or operation == "insertOne" or operation == "insertMany" or operation == "delete" or operation == "deleteOne" or operation == "deleteMany" or operation == "deleteAll" or operation == "update":
+                ret_json = {
+                    "operation": operation,
+                    "collection": collection,
+                    'status': 'forbidden',
+                    "message": "Operation is not allowed",
+                }
+                return ret_json
 
             if operation == "find":
                 try:
