@@ -6,7 +6,7 @@
 
 **VectorDBA** is the Secure AI Data Gateway for Enterprise MongoDB.
 We provide a deterministic middleware layer that enables AI agents and software applications to safely execute queries/aggregates on MongoDB clusters using plain text—without sacrificing speed, security, or predictability.
-By leveraging **Agentic workflow**, VectorDBA instantly translates plain English into precise MongoDB standard queries or complex multi-stage aggregation pipelines—complete with dynamic runtime variables. 
+By leveraging **Agentic workflow**, VectorDBA instantly translates plain English into precise MongoDB standard queries or complex multi-stage aggregation pipelines—complete with **dynamic runtime variables**. 
 
 Stop building, maintaining, and debugging dozens of rigid, single-purpose CRUD endpoints. Consolidate your data fetching layer into a single, highly flexible, intelligent NLP endpoint.
 
