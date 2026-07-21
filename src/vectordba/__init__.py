@@ -11,6 +11,6 @@ found_path = find_dotenv(usecwd=True)
 print(f"DEBUG: Auto-discovered .env path: {found_path}")
 
 load_dotenv(dotenv_path=found_path, override=True)
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 __all__ = ["VectorAgent"]
