@@ -95,17 +95,13 @@ class TestProject:
         self.analyzed_schemas = analyzed_schemas
 
 
-        connection_string = "mongodb+srv://dbuser:alpahbeta123456@arasthoo-dev.egtuvaa.mongodb.net/?retryWrites=true&w=majority&appName=arasthoo-dev"
+        connection_string = "mongodb://localhost:27017"
 
         vector_agent = VectorAgent(db_session=db_session, analyzed_schemas=analyzed_schemas)
-        database_name = "aristotle"
+        database_name = "test"
 
-        status = vector_agent.initialize_connection(connection_string=connection_string, database_name=database_name)
-
-        print(status)
-
-        user_coll = vector_agent.analyze_schemas(base_collections=["users", "wallets", "weekly_leaderboard"])
-        print(user_coll)
+        vector_agent.initialize_connection(connection_string=connection_string, database_name=database_name)
+        vector_agent.analyze_schemas(base_collections=["users", "wallets", "weekly_leaderboard"])
 
         #Example 1
 
