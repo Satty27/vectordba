@@ -4,12 +4,38 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
-**VectorDBA** is an agentic Python library designed exclusively for MongoDB development. It transforms your NoSQL database into a secure, natural language interface. 
-
+**VectorDBA is the Secure AI Data Gateway for Enterprise MongoDB **.
+We provide a deterministic middleware layer that enables AI agents and software applications to safely read from MongoDB clusters using natural language.
+We provide a deterministic middleware gateway that allows AI agents and applications to safely query MongoDB clusters using plain text—without sacrificing speed, security, or predictability.
 By leveraging the reasoning capabilities of `gpt-4o-mini`, VectorDBA instantly translates plain English into precise MongoDB standard queries or complex multi-stage aggregation pipelines—complete with dynamic runtime variables.
 
 Stop building, maintaining, and debugging dozens of rigid, single-purpose CRUD endpoints. Consolidate your data fetching layer into a single, highly flexible, intelligent NLP endpoint.
 
+```mermaid
+graph TD
+    classDef payload fill:#e2e8f0,stroke:#475569,stroke-width:2px,color:#0f172a,font-weight:bold;
+    classDef stage fill:#f8fafc,stroke:#2563eb,stroke-width:2px,color:#1e3a8a;
+    classDef output fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#14532d,font-weight:bold;
+
+    Input["📥 User Intent Payload<br>(Natural Language + Base Collections)"]:::payload
+
+    subgraph VectorDBA_Engine ["VectorDBA Open-Source Compilation Engine"]
+        S1["<b>1. Prompt-to-Task Decomposition</b><br>• Deconstructs intent into filtering, grouping, & projection targets"]:::stage
+        S2["<b>2. Schema Resolver & Type Isolation</b><br>• Validates keys against schema & isolates BSON data types"]:::stage
+        S3["<b>3. Relationship-to-Schema Mapping</b><br>• Resolves multi-collection references & constructs $lookup joins"]:::stage
+        S4["<b>4. Deterministic Pipeline Construction</b><br>• Enforces optimal stage ordering ($match ➔ $lookup ➔ $group)"]:::stage
+        S5["<b>5. BSON Query Generator & Validator</b><br>• Binds dynamic kwargs & compiles executable BSON syntax"]:::stage
+    end
+
+    Output[("🚀 Executable MongoDB BSON Query<br>(PyMongo / Motor Driver)")]:::output
+
+    Input --> S1
+    S1 --> S2
+    S2 --> S3
+    S3 --> S4
+    S4 --> S5
+    S5 --> Output
+```
 ---
 
 ## ✨ Features
