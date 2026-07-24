@@ -40,7 +40,7 @@ graph TD
 ## ✨ Features
 
 *   🗣️ **Text-to-NoSQL Translation:** Write complex database requests in plain English. VectorDBA handles the heavy lifting, translating intent into native MongoDB query syntax.
-*   🧠 **Agentic Query Planning:** Powered by `gpt-4o-mini`, VectorDBA deeply understands context, deeply nested structures, and relationships to construct highly accurate operations.
+*   🧠 **Agentic Query Planning:** Powered by **OPENAPI**, VectorDBA deeply understands context, deeply nested structures, and relationships to construct highly accurate operations.
 *   🔒 **Privacy-First Schema Isolation:** VectorDBA connects to your database, infers the shape of your collections, and caches the structure locally. **Only the schema metadata is sent to the LLM**—your actual database records are never exposed to the agent.
 *   ⚡ **Secure Runtime Variables:** Safely inject dynamic inputs into your natural language prompts at runtime, eliminating string-concatenation and prompt-injection vulnerabilities.
 *   🛠️ **Complex Aggregations Out-of-the-Box:** Seamlessly generates standard `find()` queries as well as advanced `aggregate()` pipelines (`$lookup`, `$unwind`, `$group`, etc.).
