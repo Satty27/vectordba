@@ -1,10 +1,10 @@
-# VectorDBA: Agentic MongoDB NLP Database Interface 🤖🍃
+# VectorDBA: Secure Agentic AI Data Gateway for Enterprise MongoDB 🤖🍃
 
 [![PyPI version](https://img.shields.io/pypi/v/vectordba.svg)](https://pypi.org/project/vectordba/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
-**VectorDBA** is the Secure AI Data Gateway for Enterprise MongoDB.
+**VectorDBA** is the Secure Agentic AI Data Gateway for Enterprise MongoDB.
 We provide a deterministic middleware layer that enables AI agents and software applications to safely execute queries/aggregates on MongoDB clusters using plain text—without sacrificing speed, security, or predictability.
 By leveraging **Agentic workflow**, VectorDBA instantly translates plain English into precise MongoDB standard queries or complex multi-stage aggregation pipelines—complete with **dynamic runtime variables**. 
 
